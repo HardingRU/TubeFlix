@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       apiDataLoaded: false,
       apiData: null,
+      apiData44: null,
       search: null
     }
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -28,7 +29,13 @@ class App extends Component {
       .then(data => {
         this.setState({
            apiData: data,
-           apiDataLoaded: true
+         })
+         services.get44()
+         .then(data44 => {
+           this.setState({
+             apiData44: data44,
+             apiDataLoaded: true
+           })
          })
       })
       .catch(err => {
@@ -50,7 +57,10 @@ class App extends Component {
 
   renderVideos() {
     return (
-      <Category videos={this.state.apiData}/>
+      <div>
+        <Category videos={this.state.apiData}/>
+        <Category videos={this.state.apiData44}/>
+      </div>
     )
   }
 

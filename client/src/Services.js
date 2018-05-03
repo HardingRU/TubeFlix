@@ -16,6 +16,13 @@ class Services {
     })
   }
 
+  get44() {
+    return axios({
+      method: 'get',
+      url: '/api/44'
+    })
+  }
+
 }
 
 export default new Services();

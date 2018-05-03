@@ -11,11 +11,13 @@ class Category extends Component {
   renderVideos() {
 
     return this.props.videos.data.data.map((el,i) => {
-      let link = "https://www.youtube.com/embed/" + el.id
+      let link = "https://www.youtube.com/embed/" + el.id.videoId
       console.log(el)
       return (
           <div key={i}>
-            <iframe title={i} src={link} />
+            <img alt="" src={el.snippet.thumbnails.high.url} width="320" height="200"></img>
+            <p>{el.snippet.title}</p>
+            {/* <iframe title={i} src={link} /> */}
           </div>
       )
     })
