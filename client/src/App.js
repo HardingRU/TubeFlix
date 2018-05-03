@@ -57,10 +57,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MuiThemeProvider>
-          {/* <NavBar/> */}
-          <Dropdown />
-        </MuiThemeProvider>
+
         <form onSubmit={this.handleFormSubmit}>
           <input type='text' name='search' onChange={this.handleInputChange} placeholder='Search Here' />
           <input type='submit' value="Search Here"/>

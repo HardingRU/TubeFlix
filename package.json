@@ -24,6 +24,8 @@
     "express": "^4.16.3",
     "http": "0.0.0",
     "morgan": "^1.9.0",
-    "nodemon": "^1.17.3"
+    "nodemon": "^1.17.3",
+    "react-alice-carousel": "^1.9.2",
+    "react-responsive-carousel": "^3.1.37"
   }
 }
