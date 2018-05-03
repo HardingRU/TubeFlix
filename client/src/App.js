@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import services from './Services'
+import Category from './components/Category'
 import './App.css';
 
 class App extends Component {
@@ -13,17 +14,18 @@ class App extends Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.renderVideos = this.renderVideos.bind(this);
+
   }
 
 
   componentDidMount() {
       services.getHomeData()
       .then(data => {
-        console.log(data)
-        // this.setState({
-        //   isLoggedIn: resp.data.isLoggedIn,
-        //   username: resp.data.token.username
-        // })
+        this.setState({
+           apiData: data,
+           apiDataLoaded: true
+         })
       })
       .catch(err => {
         console.log(err)
@@ -38,11 +40,14 @@ class App extends Component {
      })
   }
 
-  // process the user add
   handleFormSubmit(e) {
     e.preventDefault();
-    console.log("form submitted")
-    console.log(this.state)
+  }
+
+  renderVideos() {
+    return (
+      <Category videos={this.state.apiData}/>
+    )
   }
 
   render() {
@@ -53,6 +58,7 @@ class App extends Component {
           <input type='text' name='search' onChange={this.handleInputChange} placeholder='Search Here' />
           <input type='submit' value="Search Here"/>
         </form>
+        {this.state.apiDataLoaded ? this.renderVideos() : <h1>Loading...</h1>}
       </div>
     );
   }
