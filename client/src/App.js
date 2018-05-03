@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import services from './Services'
 import './App.css';
 
 class App extends Component {
@@ -13,6 +14,22 @@ class App extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
+
+
+  componentDidMount() {
+      services.getHomeData()
+      .then(data => {
+        console.log(data)
+        // this.setState({
+        //   isLoggedIn: resp.data.isLoggedIn,
+        //   username: resp.data.token.username
+        // })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+
 
   handleInputChange(e) {
     let value = e.target.value;
