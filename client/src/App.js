@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import services from './Services'
 import Category from './components/Category'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import NavBar from './components/navBar'
+import Dropdown from './components/dropDown'
+
 import './App.css';
 
 class App extends Component {
@@ -53,7 +57,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Welcome to TubeFlix</h1>
+        <MuiThemeProvider>
+          {/* <NavBar/> */}
+          <Dropdown />
+        </MuiThemeProvider>
         <form onSubmit={this.handleFormSubmit}>
           <input type='text' name='search' onChange={this.handleInputChange} placeholder='Search Here' />
           <input type='submit' value="Search Here"/>
