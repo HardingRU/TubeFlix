@@ -16,6 +16,13 @@ class Services {
     })
   }
 
+  search(query) {
+    return axios({
+      method: 'get',
+      url: `/api/search/${query}`
+    })
+  }
+
   get44() {
     return axios({
       method: 'get',

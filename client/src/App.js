@@ -32,11 +32,13 @@ class App extends Component {
   componentDidMount() {
     services.getHomeData()
     .then(data => {
+      console.log("pop data", data)
       this.setState({
         apiData: data,
       })
       services.get44()
       .then(data44 => {
+        console.log("trailer data", data44)
         this.setState({
           apiData44: data44,
         })
@@ -106,25 +108,35 @@ class App extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
+    let searchQuery = this.state.search
+    searchQuery = searchQuery.replace(/ /gi, "%20")
+
+    services.search(searchQuery)
+      .then(data => {
+        console.log(data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   renderVideos() {
     return (
       <div>
         <h2> Most Popular </h2>
-        <Category videos={this.state.apiData}/>
+        <Category isPopular={true} videos={this.state.apiData}/>
         <h2> Movie Trailers </h2>
-        <Category videos={this.state.apiData44}/>
+        <Category isPopular={false} videos={this.state.apiData44}/>
         <h2> Gaming </h2>
-        <Category videos={this.state.apiData20}/>
+        <Category isPopular={false} videos={this.state.apiData20}/>
         <h2> Sports </h2>
-        <Category videos={this.state.apiData17}/>
+        <Category isPopular={false} videos={this.state.apiData17}/>
         <h2> Music </h2>
-        <Category videos={this.state.apiData10}/>
+        <Category isPopular={false} videos={this.state.apiData10}/>
         <h2> Comedy </h2>
-        <Category videos={this.state.apiData23}/>
+        <Category isPopular={false} videos={this.state.apiData23}/>
         <h2> News & Politics </h2>
-        <Category videos={this.state.apiData25}/>
+        <Category isPopular={false} videos={this.state.apiData25}/>
       </div>
     )
   }

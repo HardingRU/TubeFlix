@@ -10,18 +10,30 @@ class Category extends Component {
 
   renderVideos() {
 
-    return this.props.videos.data.data.map((el,i) => {
-      let link = "https://www.youtube.com/embed/" + el.id.videoId
-      console.log(el)
-      return (
-          <div key={i}>
-            <img alt="" src={el.snippet.thumbnails.high.url} width="320" height="200"></img>
-            <p>{el.snippet.title}</p>
-            {/* <iframe title={i} src={link} /> */}
-          </div>
-      )
-    })
+    if(this.props.isPopular === true) {
+      return this.props.videos.data.data.map((el,i) => {
+        let link = "https://www.youtube.com/watch?v=" + el.id
+        return (
+            <div key={i}>
+              <a href={link}><img alt="" src={el.snippet.thumbnails.high.url} width="320" height="200"></img></a>
+              <a href={link}><p>{el.snippet.title}</p></a>
+            </div>
+        )
+      })
+    }
 
+    else {
+      return this.props.videos.data.data.map((el,i) => {
+        let link = "https://www.youtube.com/watch?v=" + el.id.videoId
+        return (
+            <div key={i}>
+              <a href={link}><img alt="" src={el.snippet.thumbnails.high.url} width="320" height="200"></img></a>
+              <a href={link}><p>{el.snippet.title}</p></a>
+
+            </div>
+        )
+      })
+    }
   }
 
 
