@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import services from '../Services'
+import SearchRow from './SearchRow'
+
 
 
 class Search extends Component {
@@ -59,15 +61,19 @@ class Search extends Component {
   }
 
   renderResults() {
-    return this.state.apiData.data.data.map((el,i) => {
-      let link = "https://www.youtube.com/watch?v=" + el.id.videoId
-      return (
-          <div key={i}>
-            <a href={link}><img alt="" src={el.snippet.thumbnails.high.url} width="320" height="200"></img></a>
-            <a href={link}><p>{el.snippet.title}</p></a>
-          </div>
-      )
-    })
+
+    return (
+      <div>
+        <h1>Search Results for {this.props.match.params.query}</h1>
+        <SearchRow results={this.state.row1} />
+        <SearchRow results={this.state.row2} />
+        <SearchRow results={this.state.row3} />
+        <SearchRow results={this.state.row4} />
+        <SearchRow results={this.state.row5} />
+        <SearchRow results={this.state.row6} />
+      </div>
+    )
+
   }
 
   render() {
@@ -76,29 +82,6 @@ class Search extends Component {
         {this.state.apiDataLoaded ? this.renderResults() : <h1>Loading...</h1>}
       </div>
     )
-
-
-    // if(this.state.apiDataLoaded === true) {
-    //   return (
-    //   <div>
-    //     <h1>Search Results for {this.props.match.params.query}</h1>
-    //     <div className="row">
-    //       <div className="col-xs-6 col-md-3">
-    //         <a href={this.state.apiData.data.data[3].snippet.thumbnails.default.url} className="thumbnail">
-    //           <img src={this.state.apiData.data.data[3].snippet.thumbnails.default.url} alt="...">
-    //           </img>
-    //         </a>
-    //       </div>
-    //     </div>
-    //   </div>
-    //
-    //     )
-    // }
-    // else {
-    //   return (
-    //     <h1> Loading... </h1>
-    //   )
-    // }
 
     }
 
