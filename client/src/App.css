@@ -26,3 +26,55 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+body {
+  background-color: rgb(21, 27, 31);
+}
+
+h2 {
+  text-align: left;
+  margin: 0 0 0 65px;
+  color: blue;
+}
+
+hr {
+  border: none;
+  height: 3px;
+  background-color: blue
+}
+
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0 0 0;
+}
+
+p {
+  color: blue;
+}
+
+.thumbnail {
+  height: 100%;
+  border-color: blue;
+  background-color: rgb(211,211,211);
+}
+
+.formLeft {
+  text-align: right;
+
+  padding: 10px 60px 5px 60px;
+  background-color: rgb(211,211,211);
+
+}
+
+input {
+  margin: 0 5px 5px 0;
+}
+
+.logo {
+  float: left;
+  font-size: 20px;
+  color: blue;
+  font-weight: bold;
+
+}

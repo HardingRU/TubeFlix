@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import services from '../Services'
 import SearchRow from './SearchRow'
+import {Redirect} from 'react-router-dom'
+
 
 
 
@@ -17,16 +19,38 @@ class Search extends Component {
       row3: null,
       row4: null,
       row5: null,
-      row6: null
+      row6: null,
+      search: null,
+      fireRedirect: false,
+      searchLink: null
     }
     this.renderResults = this.renderResults.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
 
+  }
+
+  handleInputChange(e) {
+    let value = e.target.value;
+    this.setState({
+      search: value
+    })
+  }
+
+  handleFormSubmit(e) {
+    e.preventDefault();
+
+    let searchQuery = this.state.search
+    searchQuery = searchQuery.replace(/ /gi, "%20")
+    this.setState({
+      searchLink: searchQuery,
+      fireRedirect: true
+    })
   }
 
   componentDidMount() {
     services.search(this.props.match.params.query)
     .then(data => {
-      console.log("search data", data)
       let arr1 = []
       let arr2 = []
       let arr3 = []
@@ -50,10 +74,6 @@ class Search extends Component {
         row6: arr6
       })
 
-
-      console.log(this.state.row1)
-      console.log(this.state.row6)
-
     })
     .catch(err => {
       console.log(err)
@@ -64,7 +84,9 @@ class Search extends Component {
 
     return (
       <div>
-        <h1>Search Results for {this.props.match.params.query}</h1>
+        <br/>
+        <h2>Top Search Results for "{this.props.match.params.query}"</h2>
+        <br/>
         <SearchRow results={this.state.row1} />
         <SearchRow results={this.state.row2} />
         <SearchRow results={this.state.row3} />
@@ -78,8 +100,16 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.apiDataLoaded ? this.renderResults() : <h1>Loading...</h1>}
+        <div className="App">
+          <div className="formLeft">
+            <a className="logo" href="/">TubeFlix</a>
+            <form onSubmit={this.handleFormSubmit}>
+              <input type='text' name='search' onChange={this.handleInputChange} placeholder='search query...' size="60"/>
+              <input type='submit' value="Search"/>
+            </form>
+          </div>
+        {this.state.apiDataLoaded ? this.renderResults() : <h2>Loading...</h2>}
+        {this.state.fireRedirect ? <Redirect to={`/search/${this.state.searchLink}`} /> : ''}
       </div>
     )
 

@@ -124,18 +124,26 @@ class Home extends Component {
   renderVideos() {
     return (
       <div>
+        <br/>
+        <br/>
         <h2> Most Popular </h2>
         <Category isPopular={true} videos={this.state.apiData}/>
+        <hr/>
         <h2> Movie Trailers </h2>
         <Category isPopular={false} videos={this.state.apiData44}/>
+        <hr/>
         <h2> Gaming </h2>
         <Category isPopular={false} videos={this.state.apiData20}/>
+        <hr/>
         <h2> Sports </h2>
         <Category isPopular={false} videos={this.state.apiData17}/>
+        <hr/>
         <h2> Music </h2>
         <Category isPopular={false} videos={this.state.apiData10}/>
+        <hr/>
         <h2> Comedy </h2>
         <Category isPopular={false} videos={this.state.apiData23}/>
+        <hr/>
         <h2> News & Politics </h2>
         <Category isPopular={false} videos={this.state.apiData25}/>
       </div>
@@ -146,11 +154,14 @@ class Home extends Component {
 
     return (
       <div className="App">
-        <form onSubmit={this.handleFormSubmit}>
-          <input type='text' name='search' onChange={this.handleInputChange} placeholder='Search Here' />
-          <input type='submit' value="Search Here"/>
-        </form>
-        {this.state.apiDataLoaded ? this.renderVideos() : <h1>Loading...</h1>}
+        <div className="formLeft">
+          <a className="logo" href="/">TubeFlix</a>
+          <form onSubmit={this.handleFormSubmit}>
+            <input type='text' name='search' onChange={this.handleInputChange} placeholder='search query...' size="60"/>
+            <input type='submit' value="Search"/>
+          </form>
+        </div>
+        {this.state.apiDataLoaded ? this.renderVideos() : <h2>Loading...</h2>}
         {this.state.fireRedirect ? <Redirect to={`/search/${this.state.searchLink}`} /> : ''}
       </div>
     );
