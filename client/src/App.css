@@ -63,7 +63,8 @@ p {
   text-align: right;
 
   padding: 10px 60px 5px 60px;
-  background-color: rgb(211,211,211);
+  /* background-color: rgb(211,211,211); */
+  background-color: rgb(42, 52, 57);
 
 }
 
