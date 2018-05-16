@@ -9,7 +9,13 @@ class Search extends Component {
     super(props)
     this.state = {
       apiDataLoaded: false,
-      apiData: null
+      apiData: null,
+      row1: null,
+      row2: null,
+      row3: null,
+      row4: null,
+      row5: null,
+      row6: null
     }
     this.renderResults = this.renderResults.bind(this);
 
@@ -19,10 +25,33 @@ class Search extends Component {
     services.search(this.props.match.params.query)
     .then(data => {
       console.log("search data", data)
+      let arr1 = []
+      let arr2 = []
+      let arr3 = []
+      let arr4 = []
+      let arr5 = []
+      let arr6 = []
+      arr1 = data.data.data.splice(0,4)
+      arr2 = data.data.data.splice(0,4)
+      arr3 = data.data.data.splice(0,4)
+      arr4 = data.data.data.splice(0,4)
+      arr5 = data.data.data.splice(0,4)
+      arr6 = data.data.data.splice(0,4)
       this.setState({
         apiDataLoaded: true,
-        apiData: data
+        apiData: data,
+        row1: arr1,
+        row2: arr2,
+        row3: arr3,
+        row4: arr4,
+        row5: arr5,
+        row6: arr6
       })
+
+
+      console.log(this.state.row1)
+      console.log(this.state.row6)
+
     })
     .catch(err => {
       console.log(err)

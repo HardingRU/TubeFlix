@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 // import {Slide} from 'react-slideshow-image'
-import { Carousel } from 'react-responsive-carousel';
-import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+//import { Carousel } from 'react-responsive-carousel';
+//import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import "react-alice-carousel/lib/alice-carousel.css"
 import AliceCarousel from 'react-alice-carousel';
 

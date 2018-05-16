@@ -10,7 +10,7 @@ var util = require('util');
 
 videoController.search = (req, res) => {
   console.log(req.params.query)
-  axios.get(`https://www.googleapis.com/youtube/v3/search?q=${req.params.query}&maxResults=25&part=snippet&key=AIzaSyCYqJ6rEU6AtQW4Friv5Hly0pYIylhARso`)
+  axios.get(`https://www.googleapis.com/youtube/v3/search?q=${req.params.query}&maxResults=24&part=snippet&key=AIzaSyCYqJ6rEU6AtQW4Friv5Hly0pYIylhARso`)
   .then(videos => {
     console.log(videos)
     let test = []

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import services from '../Services'
 import Category from '../components/Category'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import NavBar from '../components/navBar'
-import Dropdown from '../components/dropDown'
-import Search from '../components/Search'
+//import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+//import NavBar from '../components/navBar'
+//import Dropdown from '../components/dropDown'
+//import Search from '../components/Search'
 import {Redirect} from 'react-router-dom'
 
 
