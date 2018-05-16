@@ -38,13 +38,11 @@ class Home extends Component {
   componentDidMount() {
     services.getHomeData()
     .then(data => {
-      console.log("pop data", data)
       this.setState({
         apiData: data,
       })
       services.get44()
       .then(data44 => {
-        console.log("trailer data", data44)
         this.setState({
           apiData44: data44,
         })
