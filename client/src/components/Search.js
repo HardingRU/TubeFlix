@@ -104,7 +104,7 @@ class Search extends Component {
           <div className="formLeft">
             <a className="logo" href="/">TubeFlix</a>
             <form onSubmit={this.handleFormSubmit}>
-              <input type='text' name='search' onChange={this.handleInputChange} placeholder='search query...' size="60"/>
+              <input type='text' name='search' onChange={this.handleInputChange} placeholder='search videos...' size="60"/>
               <input type='submit' value="Search"/>
             </form>
           </div>
